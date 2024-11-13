@@ -1,6 +1,3 @@
-# games
-the code of games that i have made.
-
 Gamedev Journey started: 2024 - october
 
 # total games made: 05  
