@@ -21,8 +21,13 @@ public class BoxScript : MonoBehaviour
     GameObject clonedBox;
     bool canInstantiate = true;
     float moveDuration = .5f;
+    float moveDurationHandle = .05f;
     float elapsedTime = 0f;
     bool isGameOver = false;
+    bool isBoxLaunched = false;
+    float elapsedTimeUpdate = 0;
+    float targetYAxisRange = 0f;
+    float targetYAxisStart = 0f;
 
     void Awake()
     {
@@ -68,36 +73,53 @@ public class BoxScript : MonoBehaviour
         float zRotation = transform.eulerAngles.z;
         if (zRotation > 180) zRotation -= 360;
         // Check if the rotation is greater than 25 degrees or less than -25 or -40 degrees
-        if (Mathf.Floor(zRotation) > 3f || Mathf.Floor(zRotation) < -3f)
+        if (Mathf.Floor(zRotation) > 2.5f || Mathf.Floor(zRotation) < -2.5f)
         {
             ChangeGravity(true);
             isGameOver = true;
-            Debug.Log("hey");
-            Invoke("GameEnd", 1f);
+            Debug.Log("game ended=]");
+            //Invoke("GameEnd", 3f);
         }
+        if (isBoxLaunched)
+        {
+            elapsedTimeUpdate += Time.deltaTime * 20;
+            float t = elapsedTimeUpdate / moveDurationHandle;
+
+            // Calculate the increment while clamping it to 10 units
+            holder.yAxisRange = Mathf.Clamp(holder.yAxisRange + Mathf.Lerp(0.01f, 0.10f, t), targetYAxisRange, targetYAxisRange+15f);
+            holder.yStartAxis = Mathf.Clamp(holder.yStartAxis + Mathf.Lerp(0.01f, 0.10f, t), targetYAxisStart, targetYAxisStart+15f);
+
+            // Check if either axis has reached the target
+            if (holder.yAxisRange >= targetYAxisRange+15f || holder.yStartAxis >= targetYAxisStart+15f)
+            {
+                isBoxLaunched = false;
+                elapsedTimeUpdate = 0;
+            }
+        }
+
     }
     void GameEnd()
     {
         gameManager.IsPlayerDead = true;
 
     }
-void InstantiateBox()
-{
-    if (!gameManager.IsPlayerDead && canInstantiate)
+    void InstantiateBox()
     {
-        gameManager.score++;
+        if (!gameManager.IsPlayerDead && canInstantiate)
+        {
+            gameManager.score++;
 
-        clonedBox = Instantiate(gameObject, handle.position, handle.rotation, parent);
-        clonedBox.SetActive(false);
-        clonedBox.transform.localScale = new Vector3(0.09f, 0.09f, 0.09f);
+            clonedBox = Instantiate(gameObject, handle.position, handle.rotation, parent);
+            clonedBox.SetActive(false);
+            clonedBox.transform.localScale = new Vector3(0.09f, 0.09f, 0.09f);
 
-        rb.useGravity = true;
-        isBoxReleased = true;
-        transform.parent = Cubes.transform;
-        timeline.Play();
-        canInstantiate = false;
+            rb.useGravity = true;
+            isBoxReleased = true;
+            transform.parent = Cubes.transform;
+            timeline.Play();
+            canInstantiate = false;
+        }
     }
-}
 
 
 
@@ -136,6 +158,7 @@ void InstantiateBox()
     }
     void HandleBoxCollision()
     {
+        rb.constraints = RigidbodyConstraints.None;
         gameManager.Signal("bounce", false);
         transform.tag = "ReleasedBox";
         Invoke("UnfreezeRotation", .1f);
@@ -143,15 +166,18 @@ void InstantiateBox()
         Invoke("CreateCagedBox", .5f);
         rb.linearVelocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
-        holder.yAxisRange += 10f;
-        holder.yStartAxis += 10f;
+        targetYAxisRange = holder.yAxisRange;
+        targetYAxisStart = holder.yStartAxis;
+        Debug.Log(targetYAxisRange);
+        Debug.Log(targetYAxisStart);
         Invoke("StopGravity", 1f);
         ChangeCameraPosition();
+        isBoxLaunched = true;
     }
 
     void UnfreezeRotation()
     {
-        rb.constraints = RigidbodyConstraints.None;
+        //rb.constraints = RigidbodyConstraints.None;
         Invoke("freezeY", .5f);
     }
     void freezeY()
@@ -179,6 +205,7 @@ void InstantiateBox()
             camera.transform.position = Vector3.Lerp(startCamera, targetCamera, t);
             gameManager.background.transform.position = Vector3.Lerp(startBackground, targetBackground, t);
             elapsedTime += Time.deltaTime;
+
             yield return null;
         }
         camera.transform.position = targetCamera;
