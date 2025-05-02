@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85c10a38e0ea8f242a55ed6463ee8db1, type: 3}
+  m_Name: AudioManager
+  m_EditorClassIdentifier: 
+  audios:
+  - audioName: 9
+    audioClip: {fileID: 8300000, guid: f176dd75a2da2bb429902068c46c59c5, type: 3}
+    volume: 1
+    loop: 0
+  - audioName: 0
+    audioClip: {fileID: 8300000, guid: bb7bfeb27f7c8e448b37d14e99de63ad, type: 3}
+    volume: 1
+    loop: 0
+  - audioName: 1
+    audioClip: {fileID: 8300000, guid: f9883541ba514334f86aa2c1f724bba1, type: 3}
+    volume: 1
+    loop: 0
+  - audioName: 2
+    audioClip: {fileID: 8300000, guid: 513d2e8bbbbf3a7458cda33193cc08aa, type: 3}
+    volume: 1
+    loop: 0
+  - audioName: 3
+    audioClip: {fileID: 8300000, guid: 12be00c662d31a640a1c44c324100930, type: 3}
+    volume: 1
+    loop: 0
+  - audioName: 4
+    audioClip: {fileID: 8300000, guid: 76c7dc20369ccf94d9e6c0095691c54c, type: 3}
+    volume: 1
+    loop: 0
+  - audioName: 5
+    audioClip: {fileID: 8300000, guid: 76e11ee4bddf1684cbfa07ef743a159c, type: 3}
+    volume: 1
+    loop: 0
+  - audioName: 6
+    audioClip: {fileID: 8300000, guid: 11de1b0ed5eaf024ca7323eef85742f0, type: 3}
+    volume: 1
+    loop: 0
+  - audioName: 7
+    audioClip: {fileID: 8300000, guid: 69c95bf106b3c6e479345ea7c7969bfc, type: 3}
+    volume: 1
+    loop: 0
+  - audioName: 8
+    audioClip: {fileID: 8300000, guid: deb53445efb4a374baf545f7f38bf237, type: 3}
+    volume: 1
+    loop: 0
+  - audioName: 10
+    audioClip: {fileID: 8300000, guid: 7750aded99063f4478e2ad65ed2fef87, type: 3}
+    volume: 1
+    loop: 0
+  - audioName: 11
+    audioClip: {fileID: 8300000, guid: 109fb412f3f7d5d4ca605e299620a1c4, type: 3}
+    volume: 1
+    loop: 0
+  - audioName: 12
+    audioClip: {fileID: 8300000, guid: 554da6f22f083a14fabf36d85b473286, type: 3}
+    volume: 1
+    loop: 0

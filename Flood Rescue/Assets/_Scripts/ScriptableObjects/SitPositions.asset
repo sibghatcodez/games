@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a956404af9e1df9438f50c092b4eca87, type: 3}
+  m_Name: SitPositions
+  m_EditorClassIdentifier: 
+  positions:
+  - {x: -4.6, y: 1, z: 1.43}
+  - {x: -4.6, y: 1, z: 0}
+  - {x: -6.1, y: 1, z: 1.4}
+  - {x: -6.1, y: 1, z: -0.3}
+  - {x: -7.3, y: 1, z: 0}
+  - {x: -7.3, y: 1, z: 1.1}
+  - {x: -5.3, y: 1, z: 0.8}
+  - {x: -5.3, y: 1, z: 0.2}
+  rotations:
+  - {x: 0, y: -180, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: -180, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: -315, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: -240, z: 0}
+  - {x: 0, y: 90, z: 0}
