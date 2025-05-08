@@ -1,6 +1,6 @@
 Gamedev Journey started: 2024 - october
 
-# total games made: 05  
+# total games made: 06
 
 #1 CUBETHON   
 
@@ -11,3 +11,5 @@ Gamedev Journey started: 2024 - october
 #4 PARKORUR TYCOON   
 
 #5 BOX IT UP 
+
+#6 FLOOD RESCUE
